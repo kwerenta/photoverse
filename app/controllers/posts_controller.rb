@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
+  before_action :require_permission, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
   def index
@@ -55,6 +56,10 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def require_permission
+    redirect_to post_url(@post) if @post.user != current_user
   end
 
   private
