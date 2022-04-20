@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <% if not devise_controller? %>
+    <% if not devise_controller? or (controller_name == "registrations" and action_name == "edit") %>
       <header class="w-full bg-gray-100 sticky top-0 shadow">
         <%= render "layouts/navbar" %>
       </header>
