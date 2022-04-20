@@ -10,6 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
+    <% if controller_name != "sessions" and controller_name != "registrations" and controller_name != "passwords" %>
+      <header class="w-full bg-gray-100 sticky top-0 shadow">
+        <%= render "layouts/navbar" %>
+      </header>
+    <% end %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
