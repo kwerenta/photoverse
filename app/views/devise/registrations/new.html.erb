@@ -7,6 +7,14 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     <div class="my-5">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <div class="my-5">
+      <%= f.label :username %>
+      <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <div class="my-5">
       <%= f.label :password %>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
