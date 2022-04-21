@@ -5,12 +5,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(%i[user photos_attachments])
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.order(created_at: :desc).includes([:user])
   end
 
   # GET /posts/new
