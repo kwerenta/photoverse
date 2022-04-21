@@ -12,5 +12,10 @@ User.create({email: "jankowal@mail.com", password: "password", password_confirma
 username: "kowal2115"})
 
 5.times do |x|
-  Post.create({caption: "My #{x} post", user: User.first})
+  post = Post.create({caption: "My #{x} post", user: x.even? ? User.first : User.last})
+  post.photos.attach(
+    io:           File.open(Rails.root.join("app", "assets", "images", "dev_only_placeholder_post_#{(x % 2) + 1}.jpg")),
+    filename:     "dev_only_placeholder_post_#{(x % 2) + 1}.jpg",
+    content_type: "image/jpg"
+  )
 end

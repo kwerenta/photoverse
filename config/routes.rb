@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "profiles/:id", to: "profiles#show", as: "profile"
+  get "/p/:id", to: "profiles#show", as: "profile"
   resources :posts do |_post|
     resources :comments, only: %i[create update destroy]
   end
