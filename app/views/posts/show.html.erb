@@ -11,5 +11,13 @@
       </div>
     <% end %>
     <%= link_to 'Back to posts', posts_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div>
+      <%= render 'comments/form', post: @post, comment: @post.comments.build %>
+      <div class="flex flex-col gap-4 mt-4">
+        <% @comments.each do |comment| %>
+          <%= render "comments/comment", comment: comment %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

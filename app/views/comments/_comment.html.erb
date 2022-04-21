@@ -1,0 +1,8 @@
+<div id="<%= dom_id comment %>">
+  <strong class="font-medium mb-1"><%= comment.user.username %>:</strong>
+  <p><%= comment.content %></p>
+  <%# if comment.user == current_user %>
+  <%# button_to 'Destroy this comment', [@post,comment], method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-600 font-medium text-white" %>
+  <%# render "comments/form", comment: comment %>
+  <%# end %>
+</div>

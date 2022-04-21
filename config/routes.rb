@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get "profiles/:id", to: "profiles#show", as: "profile"
-  resources :posts
+  resources :posts do |_post|
+    resources :comments, only: %i[create update destroy]
+  end
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
