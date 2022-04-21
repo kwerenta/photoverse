@@ -8,11 +8,15 @@
     </div>
     <div class="my-5">
       <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= f.text_field :name, autocomplete: "name",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     <div class="my-5">
       <%= f.label :username %>
-      <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= f.text_field :username, autocomplete: "username",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+    <div class="my-5">
+      <%= f.label :photo %>
+      <%= f.file_field :photo,accept: 'image/png,image/jpeg,image/jpg', class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
     <div class="my-5">
       <%= f.label :password %>

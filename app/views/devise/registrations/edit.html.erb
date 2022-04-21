@@ -9,11 +9,11 @@
       </div>
       <div class="my-5">
         <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <%= f.text_field :name, autocomplete: "name",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
       <div class="my-5">
         <%= f.label :username %>
-        <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <%= f.text_field :username, autocomplete: "username",class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -25,6 +25,13 @@
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
+      </div>
+      <div class="my-5">
+        <% if resource.photo.attached? %>
+          <%= image_tag resource.photo.variant(:thumb), class: "rounded-full" %>
+        <% end %>
+        <%= f.label :photo %>
+        <%= f.file_field :photo,class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
       <div class="my-5">
         <%= f.label :password_confirmation %><br />

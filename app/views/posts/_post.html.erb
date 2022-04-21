@@ -3,6 +3,9 @@
     <strong class="block font-medium mb-1">User:</strong>
     <%= link_to post.user.username, profile_path(post.user) %>
   </p>
+  <% post.photos.each do |photo|%>
+    <%= image_tag photo.variant(action_name == "show" ? :full : :thumb) %>
+  <% end %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Caption:</strong>
     <%= post.caption %>
