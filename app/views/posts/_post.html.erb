@@ -1,7 +1,7 @@
 <div id="<%= dom_id post %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
-    <%= link_to post.user.username, profile_path(post.user) %>
+    <%= link_to post.user.username, profile_path(post.user.username) %>
   </p>
   <% post.photos.each do |photo|%>
     <%= image_tag action_name == "show" ? post.photo_as_original(photo) : post.photo_as_thumbnail(photo) %>

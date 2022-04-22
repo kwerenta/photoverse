@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get "/p/:id", to: "profiles#show", as: "profile"
   resources :posts do |_post|
     resources :comments, only: %i[create update destroy]
   end
+
+  get "/p/:username", to: "users#profile", as: "profile"
+  post "/p/:username", to: "users#follow_user", as: "new_follow"
+  delete "/p/:username", to: "users#unfollow_user", as: "destroy_follow"
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
