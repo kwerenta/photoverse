@@ -9,15 +9,15 @@
       </ul>
     </div>
   <% end %>
-  <div class="my-5">
+  <div class="form-control">
     <%= form.label :caption %>
-    <%= form.text_field :caption,autofocus: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :caption,autofocus: true, class: "input input-accent mt-2" %>
   </div>
-  <div class="my-5">
+  <div class="form-control mb-2">
     <%= form.label :photos %>
-    <%= form.file_field :photos,accept: 'image/png,image/jpeg,image/jpg', multiple: true, class:"block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :photos,accept: 'image/png,image/jpeg,image/jpg', multiple: true, class:"input input-accent mt-2" %>
   </div>
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 <% end %>

@@ -1,0 +1,12 @@
+{
+  "name": "photoverse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kwerenta/photoverse.git",
+  "author": "Kamil Wenta <kamil.wenta222@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "daisyui": "^2.14.2"
+  }
+}

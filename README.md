@@ -14,6 +14,7 @@ Simple Instagram clone made for hobby.
 To get the Rails server running locally:
 
 - Clone this repo
-- `bundle install` to install all required dependencies
+- `bundle install` to install required dependencies for Rails
+- `yarn` to install required dependencies for Node
 - `rails db:setup` to create the database initialized with seed data
 - `./bin/dev` to start the local rails server with tailwindcss compiler
