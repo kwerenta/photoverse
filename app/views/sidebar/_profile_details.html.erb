@@ -1,0 +1,23 @@
+<div class="avatar mt-8">
+  <div class="w-20 rounded-full ring ring-primary ring-offset-base-300 ring-offset-4">
+    <%= link_to image_tag(current_user.photo_as_avatar), profile_path(current_user.username) %>
+  </div>
+</div>
+<div class="mt-4 text-center">
+  <h3 class="text-lg font-semibold"><%= link_to current_user.name, profile_path(current_user.username) %></h3>
+  <h5 class="text-sm text-neutral font-medium"><%= link_to current_user.username, profile_path(current_user.username) %></h5>
+</div>
+<div class="flex w-full mt-4 divide-x-[1px] divide-neutral/30">
+  <div class="text-center flex-1">
+    <h5 class="text-sm"><%= number_to_human_shortcut(current_user.posts.size) %></h5>
+    <div class="text-xs text-neutral">Posts</div>
+  </div>
+  <div class="text-center flex-1">
+    <h5 class="text-sm"><%= number_to_human_shortcut(current_user.followers_count) %></h5>
+    <div class="text-xs text-neutral">Followers</div>
+  </div>
+  <div class="text-center flex-1">
+    <h5 class="text-sm"><%= number_to_human_shortcut(current_user.followings_count) %></h5>
+    <div class="text-xs text-neutral">Following</div>
+  </div>
+</div>

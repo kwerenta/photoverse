@@ -10,13 +10,27 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <% if not devise_controller? or (controller_name == "registrations" and action_name == "edit") %>
-      <header class="sticky top-0 shadow bg-base-200">
-        <%= render "layouts/navbar" %>
-      </header>
-    <% end %>
-    <main class="p-8">
+    <% if not devise_controller? or (controller_name == "registrations" and action_name == "edit")%>
+      <div class="drawer drawer-mobile bg-base-300">
+        <input id="drawer-checkbox" type="checkbox" class="drawer-toggle">
+        <main class="drawer-content flex flex-col bg-base-100 lg:rounded-l-box py-2 px-16">
+          <%= render "layouts/navbar" %>
+          <%= yield %>
+          <label for="drawer-checkbox" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        </main>
+        <nav class="drawer-side">
+          <label for="drawer-checkbox" class="drawer-overlay"></label>
+          <ul class="menu p-4 overflow-y-auto w-80 text-base-content">
+            <div class="flex flex-col items-center justify-center mb-8">
+              <%= link_to "Photoverse", root_path, class:"text-2xl font-medium font-mono block px-4 py-3" %>
+              <%= render "sidebar/profile_details" %>
+            </div>
+            <%= render "sidebar/menu_items" %>
+          </ul>
+        </nav>
+      </div>
+    <% else %>
       <%= yield %>
-    </main>
+    <% end %>
   </body>
 </html>

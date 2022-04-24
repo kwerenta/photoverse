@@ -1,18 +1,10 @@
-<nav class="navbar p-4">
-  <div class="navbar-start">
-    <%= link_to "Photoverse", root_path, class:"text-2xl font-medium font-mono" %>
+<header class="navbar mb-8 px-0">
+  <div class="flex-1">
+    <input type="search" name="search" id="search" placeholder="Search" class="input bg-base-content/10">
   </div>
-  <div class="navbar-center">
-    <input type="search" name="search" id="search" placeholder="Search" class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 placeholder:text-center placeholder:text-gray-300">
-  </div>
-  <div class="navbar-end gap-2">
-    <%= link_to "H", root_path, class: "w-8 h-8 rounded-full bg-red-200 grid place-items-center" %>
-    <%= link_to "M", "#", class: "w-8 h-8 rounded-full bg-orange-600 grid place-items-center" %>
-    <%= link_to "C", "#", class: "w-8 h-8 rounded-full bg-pink-600 grid place-items-center" %>
-    <%= link_to "E", "#", class: "w-8 h-8 rounded-full bg-purple-300 grid place-items-center" %>
+  <div class="gap-4">
     <%= link_to "N", "#", class: "w-8 h-8 rounded-full bg-green-600 grid place-items-center" %>
-    <%= link_to edit_user_registration_path, class: "rounded-full" do %>
-      <% image_tag current_user.photo_as_avatar, class: "w-8 h-8 rounded-full" %>
-    <% end %>
+    <%= link_to "M", "#", class: "w-8 h-8 rounded-full bg-orange-600 grid place-items-center" %>
+    <%= link_to "Add Photo", new_post_path, class: "btn btn-primary" %>
   </div>
-</nav>
+</header>

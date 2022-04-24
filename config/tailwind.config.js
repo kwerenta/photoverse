@@ -11,7 +11,7 @@ module.exports = {
           primary: "#E2336B",
           secondary: "#FCAC46",
           accent: "#4193EF",
-          // neutral: "#191D24",
+          neutral: "#646464",
           "base-100": "#3C3F51",
           "base-300": "#282A34",
           "base-content": "#FFFFFF",
@@ -24,7 +24,6 @@ module.exports = {
     ],
   },
   plugins: [
-    require("@tailwindcss/forms"),
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("daisyui"),
