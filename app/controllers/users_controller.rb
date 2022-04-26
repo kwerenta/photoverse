@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def set_posts
-    @posts = Post.where(user: @user).includes(%i[user photos_attachments])
+    @posts = Post.where(user: @user).includes([:user, {photos_attachments: :blob}])
   end
 end

@@ -1,20 +1,27 @@
 <div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= link_to post.user.username, profile_path(post.user.username) %>
-  </p>
-  <% post.photos.each do |photo|%>
-    <%= image_tag action_name == "show" ? post.photo_as_original(photo) : post.photo_as_thumbnail(photo) %>
-  <% end %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Caption:</strong>
-    <%= post.caption %>
-  </p>
-  <% if action_name != "show" %>
-    <%= link_to "Show this post", post, class: "btn btn-accent" %>
-    <% if post.user == current_user %>
-      <%= link_to 'Edit this post', edit_post_path(post), class: "btn btn-primary ml-2" %>
+  <div class="carousel rounded-box">
+    <% post.photos.each do |photo|%>
+      <%= image_tag action_name == "show" ? post.photo_as_original(photo) : post.photo_as_thumbnail(photo), class:"w-full" %>
     <% end %>
-    <hr class="mt-6">
-  <% end %>
+  </div>
+  <div class="flex justify-between my-3">
+    <%= link_to profile_path(post.user.username), class:"block flex items-center gap-3" do %>
+      <div class="avatar">
+        <div class="w-6 rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2">
+          <%= image_tag post.user.photo_as_avatar %>
+        </div>
+      </div>
+      <span class="text-sm"><%= post.user.username %></span>
+    <% end %>
+    <div class="flex items-center gap-2">
+      <%= link_to post_path(post), class:"flex items-center gap-1" do %>
+        <div class="w-4 h-4 rounded-full bg-red-300"></div>
+        <span class="text-sm"><%= number_to_human_shortcut(1_221_131) %></span>
+      <% end %>
+      <%= link_to post_path(post), class:"flex items-center gap-1" do %>
+        <div class="w-4 h-4 rounded-full bg-blue-300"></div>
+        <span class="text-sm"><%= number_to_human_shortcut(21_131) %></span>
+      <% end %>
+    </div>
+  </div>
 </div>
