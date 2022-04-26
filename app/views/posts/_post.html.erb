@@ -14,13 +14,20 @@
       <span class="text-sm"><%= post.user.username %></span>
     <% end %>
     <div class="flex items-center gap-2">
-      <%= link_to post_path(post), class:"flex items-center gap-1" do %>
-        <div class="w-4 h-4 rounded-full bg-red-300"></div>
-        <span class="text-sm"><%= number_to_human_shortcut(1_221_131) %></span>
+      <% if Like.where(post: post, user: current_user).exists? %>
+        <%= button_to destroy_like_path(post), method: :delete,class:"flex items-center gap-1" do %>
+          <div class="w-4 h-4 rounded-full bg-red-300"></div>
+          <span class="text-sm"><%= number_to_human_shortcut(post.likes.size) %></span>
+        <% end %>
+      <% else %>
+        <%= button_to new_like_path(post), method: :post,class:"flex items-center gap-1" do %>
+          <div class="w-4 h-4 rounded-full border-red-300 border-2"></div>
+          <span class="text-sm"><%= number_to_human_shortcut(post.likes.size) %></span>
+        <% end %>
       <% end %>
       <%= link_to post_path(post), class:"flex items-center gap-1" do %>
         <div class="w-4 h-4 rounded-full bg-blue-300"></div>
-        <span class="text-sm"><%= number_to_human_shortcut(21_131) %></span>
+        <span class="text-sm"><%= number_to_human_shortcut(post.comments.size) %></span>
       <% end %>
     </div>
   </div>

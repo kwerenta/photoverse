@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, except: %i[index new create]
   before_action :require_permission, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @comments = @post.comments.order(created_at: :desc).includes([:user, {photos_attachments: :blob}])
+    @comments = @post.comments.order(created_at: :desc).includes([:user])
   end
 
   # GET /posts/new
@@ -55,11 +55,19 @@ class PostsController < ApplicationController
     end
   end
 
-  def require_permission
-    redirect_to post_url(@post) if @post.user != current_user
+  def like_post
+    redirect_to root_path if @post.likes.create(user: current_user)
+  end
+
+  def unlike_post
+    redirect_to root_path if @post.likes.destroy_by(user: current_user)
   end
 
   private
+
+  def require_permission
+    redirect_to post_url(@post) if @post.user != current_user
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post

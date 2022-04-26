@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: :posts_count
 
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :photos
 

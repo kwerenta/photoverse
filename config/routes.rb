@@ -3,9 +3,12 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create update destroy]
   end
 
+  post "/posts/:id/like", to: "posts#like_post", as: "new_like"
+  delete "/posts/:id/like", to: "posts#unlike_post", as: "destroy_like"
+
   get "/p/:username", to: "users#profile", as: "profile"
-  post "/p/:username", to: "users#follow_user", as: "new_follow"
-  delete "/p/:username", to: "users#unfollow_user", as: "destroy_follow"
+  post "/p/:username/follow", to: "users#follow_user", as: "new_follow"
+  delete "/p/:username/follow", to: "users#unfollow_user", as: "destroy_follow"
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
