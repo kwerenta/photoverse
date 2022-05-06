@@ -16,11 +16,10 @@
         <main class="drawer-content flex flex-col bg-base-100 lg:rounded-l-box py-2 px-16">
           <%= render "layouts/navbar" %>
           <%= yield %>
-          <label for="drawer-checkbox" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
         </main>
         <nav class="drawer-side">
           <label for="drawer-checkbox" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-80 text-base-content">
+          <ul class="menu p-4 overflow-y-auto w-80 text-base-content bg-base-300">
             <div class="flex flex-col items-center justify-center mb-8">
               <%= link_to "Photoverse", root_path, class:"text-2xl font-medium font-mono block px-4 py-3" %>
               <%= render "sidebar/profile_details" %>

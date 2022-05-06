@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.includes([{photos_attachments: :blob}, {user: {photo_attachment: :blob}}])
+    @posts = Post.all.includes([{photos_attachments: :blob},
+                                {user: {photo_attachment: :blob}}]).order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -56,11 +57,11 @@ class PostsController < ApplicationController
   end
 
   def like_post
-    redirect_to root_path if @post.likes.create(user: current_user)
+    redirect_back(fallback_location: root_path) if Like.create(post: @post, user: current_user)
   end
 
   def unlike_post
-    redirect_to root_path if @post.likes.destroy_by(user: current_user)
+    redirect_back(fallback_location: root_path) if Like.destroy_by(post: @post, user: current_user)
   end
 
   private
