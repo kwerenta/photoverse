@@ -5,8 +5,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.includes([{photos_attachments: :blob},
-                                {user: {photo_attachment: :blob}}]).order(created_at: :desc)
+    @posts = Post.all
+                 .includes([{photos_attachments: :blob}, {user: {photo_attachment: :blob}}])
+                 .order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -56,21 +57,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def like_post
-    redirect_back(fallback_location: root_path) if Like.create(post: @post, user: current_user)
-  end
-
-  def unlike_post
-    redirect_back(fallback_location: root_path) if Like.destroy_by(post: @post, user: current_user)
-  end
-
   private
 
   def require_permission
     redirect_to post_url(@post) if @post.user != current_user
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
   end
