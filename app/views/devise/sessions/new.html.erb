@@ -1,28 +1,11 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Log in</h1>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "contents") do |f| %>
-    <%= render "layouts/alerts" %>
-    <div class="form-control">
-      <%= f.label :email, class: "label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-accent mt-2" %>
-    </div>
-    <div class="form-control">
-      <%= f.label :password, class: "label" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "input input-accent mt-2" %>
-    </div>
+<%= render "devise/shared/form_container",title: "Login", text: "Log in to see photos and videos from your friends." do %>
+  <%= styled_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.text_control :email %>
+    <%= f.text_control :password %>
     <% if devise_mapping.rememberable? %>
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <%= f.label :remember_me do %>
-            <span class="label-text">Remember me</span>
-            <%= f.check_box :remember_me, class:"checkbox checkbox-accent" %>
-          <% end %>
-        </label>
-      </div>
+      <%= f.boolean_control :remember_me %>
     <% end %>
-    <div class="inline">
-      <%= f.submit "Log in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-      <%= render "devise/shared/links" %>
-    </div>
+    <%= render "devise/shared/links" %>
+    <%= f.submit_control "Login" %>
   <% end %>
-</div>
+<% end %>

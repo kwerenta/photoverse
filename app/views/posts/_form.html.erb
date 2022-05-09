@@ -1,4 +1,4 @@
-<%= form_with(model: post, class: "contents") do |form| %>
+<%= styled_form_with(model: post, class: "contents") do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -9,15 +9,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-control">
-    <%= form.label :caption %>
-    <%= form.text_field :caption,autofocus: true, class: "input input-accent mt-2" %>
-  </div>
-  <div class="form-control mb-2">
-    <%= form.label :photos %>
-    <%= form.file_field :photos,accept: 'image/png,image/jpeg,image/jpg', multiple: true, class:"input input-accent mt-2" %>
-  </div>
-  <div class="inline">
-    <%= form.submit class: "btn btn-success" %>
-  </div>
+  <%= f.text_control :caption, input_html: {autofocus: true} %>
+  <%= f.file_control :photos,input_html: {accept: 'image/png,image/jpeg,image/jpg', multiple: true} %>
+  <%= f.submit_control "Create post" %>
 <% end %>
