@@ -13,10 +13,10 @@
       </div>
       <span class="text-sm"><%= post.user.username %></span>
     <% end %>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
       <%= render "likes/button", likeable: post %>
       <%= link_to post_path(post), class:"flex items-center gap-1" do %>
-        <div class="w-4 h-4 rounded-full bg-blue-300"></div>
+        <%= svg_icon("chat") %>
         <span class="text-sm"><%= number_to_human_shortcut(post.comments.size) %></span>
       <% end %>
     </div>

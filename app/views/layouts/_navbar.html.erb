@@ -1,11 +1,21 @@
 <header class="navbar mb-8 px-0">
   <div class="flex-1">
-    <input type="search" name="search" id="search" placeholder="Search" class="input bg-base-content/10">
+    <div class="form-control">
+      <div class="input-group">
+        <button class="btn btn-square bg-base-content/10 border-none group hover:bg-base-content/20">
+          <%= svg_icon("search", class: "w-6 h-6 opacity-75 group-hover:opacity-100 transition-opacity duration-200") %>
+        </button>
+        <input type="search" placeholder="Search" class="input bg-base-content/10 p-2" />
+      </div>
+    </div>
   </div>
   <div class="gap-4">
     <label for="drawer-checkbox" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-    <%= link_to "N", "#", class: "w-8 h-8 rounded-full bg-green-600 grid place-items-center" %>
-    <%= link_to "M", "#", class: "w-8 h-8 rounded-full bg-orange-600 grid place-items-center" %>
-    <label for="new_post_modal" class="btn btn-primary modal-button">Add Photo</label>
+    <%= link_to svg_icon("bell"), "#", class: "rounded-full hover:bg-white/10 p-2" %>
+    <%= link_to svg_icon("paper_airplane"), "#", class: "rounded-full hover:bg-white/10 p-2" %>
+    <label for="new_post_modal" class="btn btn-primary modal-button flex gap-2">
+      <%= svg_icon("plus", class: "w-5 h-5 bg-white/30 rounded-full") %>
+      Add Photo
+    </label>
   </div>
 </header>
