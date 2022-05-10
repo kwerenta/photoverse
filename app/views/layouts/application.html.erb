@@ -17,17 +17,9 @@
           <%= render "layouts/navbar" %>
           <%= yield %>
         </main>
-        <nav class="drawer-side">
-          <label for="drawer-checkbox" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-80 text-base-content bg-base-300">
-            <div class="flex flex-col items-center justify-center mb-8">
-              <%= link_to "Photoverse", root_path, class:"text-2xl font-medium font-mono block px-4 py-3" %>
-              <%= render "sidebar/profile_details" %>
-            </div>
-            <%= render "sidebar/menu_items" %>
-          </ul>
-        </nav>
+        <%= render "sidebar/drawer_side" %>
       </div>
+      <%= render "layouts/new_post_modal" %>
     <% else %>
       <%= yield %>
     <% end %>

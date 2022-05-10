@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :set_post, except: %i[index new create]
+  before_action :set_post, except: %i[index create]
   before_action :require_permission, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
@@ -13,11 +13,6 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @comments = @post.comments.order(created_at: :desc).includes([:user])
-  end
-
-  # GET /posts/new
-  def new
-    @post = Post.new
   end
 
   # GET /posts/1/edit
