@@ -27,9 +27,9 @@ class StyledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def submit_control(attribute, options={})
-    control_wrapper(attribute, options) do
-      submit(attribute, merge_options({class: "btn btn-primary mt-6"}, options[:input_html]))
+  def submit_control(text, options={})
+    control_wrapper(text, options) do
+      submit(text, merge_options({class: "btn btn-primary mt-6"}, options[:input_html]))
     end
   end
 

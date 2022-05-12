@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @comments = @post.comments.order(created_at: :desc).includes([:user])
+    @comments = @post.comments.order(created_at: :desc).includes(%i[user replies])
   end
 
   # GET /posts/1/edit

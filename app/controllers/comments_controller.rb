@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :require_permission, only: %i[update destroy]
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.new(comment_params)
     @comment.user = current_user
 
     if @comment.save
@@ -43,6 +43,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_id)
   end
 end

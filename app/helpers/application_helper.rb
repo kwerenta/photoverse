@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def nav_link_to(link_path, &block)
-    class_name = current_page?(link_path) ? {class: "font-semibold after:absolute after:-right-4 after:top-1/2 after:-translate-y-1/2 after:w-1 after:h-1/2 after:bg-primary after:rounded-box"} : {}
+    class_name = current_page?(link_path) ? {class: "text-primary font-bold after:absolute after:-right-4 after:top-1/2 after:-translate-y-1/2 after:w-1 after:h-1/2 after:bg-primary after:rounded-box"} : {}
 
     content = capture(&block)
     content_tag(:li, class_name) do
