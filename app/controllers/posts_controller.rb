@@ -5,9 +5,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
-                 .includes([{photos_attachments: :blob}, {user: {photo_attachment: :blob}}])
-                 .order(created_at: :desc)
+    @posts = Post.with_attached_photos
+                 .by_followed_users(current_user)
+                 .includes({user: {photo_attachment: :blob}})
   end
 
   # GET /posts/1 or /posts/1.json
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.with_attached_photos.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
