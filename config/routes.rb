@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create update destroy]
   end
 
+  get "/explore", to: "posts#explore", as: "explore"
+
   resources :likes, only: %i[create destroy]
 
   get "/p/:username", to: "users#profile", as: "profile"

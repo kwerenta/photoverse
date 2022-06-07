@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :set_post, except: %i[index create]
+  before_action :set_post, except: %i[index create explore]
   before_action :require_permission, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
@@ -8,6 +8,12 @@ class PostsController < ApplicationController
     @posts = Post.with_attached_photos
                  .by_followed_users(current_user)
                  .includes({user: {photo_attachment: :blob}})
+  end
+
+  def explore
+    @posts = Post.with_attached_photos.includes({user: {photo_attachment: :blob}})
+
+    render "index"
   end
 
   # GET /posts/1 or /posts/1.json
