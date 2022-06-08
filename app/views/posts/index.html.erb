@@ -1,4 +1,8 @@
 <h2 class="font-medium text-3xl mb-4"><%=  if action_name == 'index' then "Feed" else "Explore" end %></h2>
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-    <%= render @posts %>
+    <% if @posts.blank? %>
+      <p>You are not following anyone.</p>
+    <% else %>
+      <%= render @posts %>
+    <% end %>
   </div>

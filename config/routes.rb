@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :posts, except: %i[index new] do |_post|
+  resources :posts, except: %i[index new] do
     resources :comments, only: %i[create update destroy]
   end
 
@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
 
-  get "/p/:username", to: "users#profile", as: "profile"
-  post "/p/:username/follow", to: "users#follow_user", as: "new_follow"
-  delete "/p/:username/follow", to: "users#unfollow_user", as: "destroy_follow"
+  scope "/p/:username" do
+    get "/", to: "users#profile", as: :profile
+    post "follow", to: "users#follow", as: :new_follow
+    delete "follow", to: "users#unfollow", as: :destroy_follow
+  end
 
   devise_for :users, controllers: {
     registrations: "users/registrations"

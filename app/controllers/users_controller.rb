@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 
   def profile; end
 
-  def follow_user
+  def follow
     redirect_to profile_path(@user.username) if Follow.create(following_id: @user.id, follower_id: current_user.id)
   end
 
-  def unfollow_user
+  def unfollow
     redirect_to profile_path(@user.username) if Follow.destroy_by(following_id: @user.id, follower_id: current_user.id)
   end
 
