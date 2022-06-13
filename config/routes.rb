@@ -7,11 +7,9 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
 
-  scope "/p/:username" do
-    get "/", to: "users#profile", as: :profile
-    post "follow", to: "users#follow", as: :new_follow
-    delete "follow", to: "users#unfollow", as: :destroy_follow
-  end
+  get "/p/:username", to: "profile#show", as: :profile
+  post "profile/follow", to: "profile#follow"
+  delete "profile/unfollow", to: "profile#unfollow"
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
