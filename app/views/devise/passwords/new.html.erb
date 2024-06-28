@@ -1,5 +1,5 @@
-<%= render "devise/shared/form_container",title: "Forgot your password?", text: "Fill the form to restore your password." do %>
-  <%= styled_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: "contents") do |f| %>
+<%= render "devise/shared/form_container", title: "Forgot your password?", text: "Fill the form to restore your password." do %>
+  <%= styled_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}, class: "contents") do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.text_control :email %>
     <%= f.submit_control "Reset password" %>

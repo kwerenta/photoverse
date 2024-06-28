@@ -2,11 +2,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
 
-  has_many :received_follows, foreign_key: :following_id, class_name: "Follow"
+  has_many :received_follows, foreign_key: :following_id, class_name: "Follow", dependent: :destroy, inverse_of: :user
   has_many :followers, through: :received_follows, source: :follower
-  has_many :given_follows, foreign_key: :follower_id, class_name: "Follow"
+  has_many :given_follows, foreign_key: :follower_id, class_name: "Follow", dependent: :destroy, inverse_of: :user
   has_many :followings, through: :given_follows, source: :following
 
   has_many :likes, dependent: :destroy
@@ -33,8 +33,8 @@ class User < ApplicationRecord
     return if photo.attached?
 
     photo.attach(
-      io:           File.open(Rails.root.join("app", "assets", "images", "default_profile_photo.jpg")),
-      filename:     "default_profile_photo.jpg",
+      io: Rails.root.join("app/assets/images/default_profile_photo.jpg").open,
+      filename: "default_profile_photo.jpg",
       content_type: "image/jpg"
     )
   end

@@ -1,4 +1,4 @@
-<%= render "devise/shared/form_container",title: "Login", text: "Log in to see photos and videos from your friends." do %>
+<%= render "devise/shared/form_container", title: "Login", text: "Log in to see photos and videos from your friends." do %>
   <%= styled_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.text_control :email %>
     <%= f.text_control :password %>

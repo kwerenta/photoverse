@@ -1,5 +1,5 @@
-<%= styled_form_with(model: [post,comment], class: "contents") do |f| %>
-  <%= f.hidden_field :parent_id  %>
+<%= styled_form_with(model: [post, comment], class: "contents") do |f| %>
+  <%= f.hidden_field :parent_id %>
   <% if comment.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

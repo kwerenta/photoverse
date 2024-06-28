@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <% if not devise_controller? or (controller_name == "registrations" and action_name == "edit")%>
+    <% if not devise_controller? or (controller_name == "registrations" and action_name == "edit") %>
       <div class="drawer drawer-mobile bg-base-300">
         <input id="drawer-checkbox" type="checkbox" class="drawer-toggle">
         <main class="drawer-content flex flex-col bg-base-100 lg:rounded-l-box py-2 px-16">

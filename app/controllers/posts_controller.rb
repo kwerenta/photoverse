@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.with_attached_photos
-                 .by_followed_users(current_user)
-                 .includes({user: {photo_attachment: :blob}})
+      .by_followed_users(current_user)
+      .includes({user: {photo_attachment: :blob}})
   end
 
   def explore
@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /posts or /posts.json
   def create

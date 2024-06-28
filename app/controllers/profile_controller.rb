@@ -4,7 +4,8 @@ class ProfileController < ApplicationController
   before_action :set_user
   before_action :set_posts, only: [:show]
 
-  def show; end
+  def show
+  end
 
   def follow
     Follow.create_or_find_by(following_id: @user.id, follower_id: current_user.id)
@@ -31,11 +32,11 @@ class ProfileController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace(follow_button_dom_id(@user),
-                               partial: "profile/follow_button",
-                               locals:  {user: @user}),
+            partial: "profile/follow_button",
+            locals: {user: @user}),
           turbo_stream.update(follow_counters_dom_id(@user),
-                              partial: "profile/follow_counters",
-                              locals:  {user: @user})
+            partial: "profile/follow_counters",
+            locals: {user: @user})
         ]
       end
     end

@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  scope :by_followed_users, lambda {|user|
+  scope :by_followed_users, lambda { |user|
                               joins("INNER JOIN follows ON posts.user_id = follows.following_id")
                                 .where(follows: {follower_id: user})
                             }

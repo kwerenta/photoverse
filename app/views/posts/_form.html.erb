@@ -10,6 +10,6 @@
     </div>
   <% end %>
   <%= f.text_control :caption, input_html: {autofocus: true} %>
-  <%= f.file_control :photos,input_html: {accept: 'image/png,image/jpeg,image/jpg', multiple: true} %>
+  <%= f.file_control :photos, input_html: {accept: "image/png,image/jpeg,image/jpg", multiple: true} %>
   <%= f.submit_control "Create post" %>
 <% end %>

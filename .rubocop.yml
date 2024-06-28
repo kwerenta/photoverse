@@ -1,0 +1,35 @@
+inherit_gem:
+  standard: config/base.yml
+
+require:
+  - rubocop-rails
+  - standard
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - node_modules/**/*
+    - public/**/*
+    - vendor/**/*
+    - bin/**/*
+    - db/migrate/*
+    - db/schema.rb
+
+# Enable rubocop-rails cops
+Rails:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+  Exclude:
+    - config/**/*
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false

@@ -1,7 +1,7 @@
 class StyledFormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, :safe_join, to: :@template
 
-  def text_control(attribute, options={})
+  def text_control(attribute, options = {})
     control_wrapper(attribute, options) do
       safe_join [
         (control_label(attribute, merge_options({class: "label"}, options[:label])) unless options[:label] == false),
@@ -10,24 +10,24 @@ class StyledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def boolean_control(attribute, options={})
+  def boolean_control(attribute, options = {})
     control_wrapper(attribute, options) do
       label(attribute, merge_options({class: "label cursor-pointer"}, options[:label])) do
         safe_join [label_text(attribute),
-                   check_box(attribute, merge_options({class: "checkbox checkbox-accent"}, options[:input_html]))]
+          check_box(attribute, merge_options({class: "checkbox checkbox-accent"}, options[:input_html]))]
       end
     end
   end
 
-  def file_control(attribute, options={})
+  def file_control(attribute, options = {})
     control_wrapper(attribute, options) do
       safe_join [control_label(attribute, merge_options({class: "label"}, options[:label])),
-                 file_field(attribute,
-                            merge_options({class: "input input-bordered input-accent"}, options[:input_html]))]
+        file_field(attribute,
+          merge_options({class: "input input-bordered input-accent"}, options[:input_html]))]
     end
   end
 
-  def submit_control(text, options={})
+  def submit_control(text, options = {})
     control_wrapper(text, options) do
       submit(text, merge_options({class: "btn btn-primary mt-6"}, options[:input_html]))
     end
@@ -53,7 +53,7 @@ class StyledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def string_field(attribute, options={})
+  def string_field(attribute, options = {})
     case attribute.to_s
     when /password/ then password_field(attribute, options)
     when /email/ then email_field(attribute, options)

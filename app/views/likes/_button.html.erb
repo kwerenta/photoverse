@@ -1,12 +1,11 @@
-<% like = get_like(likeable.id)%>
-<% if like.nil? %>
-  <%= button_to likes_path, params: {like: {likeable_id: likeable.id, likeable_type: likeable.class}}, method: :post, class:"flex items-center gap-1" do %>
+<% if (like = likeable.likes.find_by(user: current_user)).nil? %>
+  <%= button_to likes_path, params: {like: {likeable_id: likeable.id, likeable_type: likeable.class}}, method: :post, class: "flex items-center gap-1" do %>
     <%= svg_icon("heart", class: "w-6 h-6 text-red-500") %>
-    <span class="text-sm"><%= get_count likeable %></span>
+    <span class="text-sm"><%= number_to_human_shortcut(likeable.likes.size) %></span>
   <% end %>
 <% else %>
-  <%= button_to like_path(like), method: :delete,class:"flex items-center gap-1" do %>
+  <%= button_to like_path(like), method: :delete, class: "flex items-center gap-1" do %>
     <%= svg_icon("heart_solid", class: "w-6 h-6 text-red-500") %>
-    <span class="text-sm"><%= get_count likeable %></span>
+    <span class="text-sm"><%= number_to_human_shortcut(likeable.likes.size) %></span>
   <% end %>
 <% end %>

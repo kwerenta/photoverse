@@ -1,10 +1,10 @@
-<%= render "devise/shared/form_container",title: "Sign up", text: "Sign up to see photos and videos from your friends." do %>
+<%= render "devise/shared/form_container", title: "Sign up", text: "Sign up to see photos and videos from your friends." do %>
   <%= styled_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.text_control :email, input_html: {autofocus: true, autocomplete: "email", required: true} %>
     <%= f.text_control :name, input_html: {autocomplete: "name", required: true} %>
     <%= f.text_control :username, input_html: {autocomplete: "username", required: true} %>
-    <%= f.file_control :photo, input_html: {accept: 'image/png,image/jpeg,image/jpg'}%>
-    <%= f.text_control :password, input_html: {autocomplete: "new-password",minlength: @minimum_password_length, required: true} %>
+    <%= f.file_control :photo, input_html: {accept: "image/png,image/jpeg,image/jpg"} %>
+    <%= f.text_control :password, input_html: {autocomplete: "new-password", minlength: @minimum_password_length, required: true} %>
     <%= f.text_control :password_confirmation, input_html: {autocomplete: "new-password", required: true} %>
     <%= render "devise/shared/links" %>
     <%= f.submit_control "Sign up" %>

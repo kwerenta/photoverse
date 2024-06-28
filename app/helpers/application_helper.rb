@@ -4,12 +4,15 @@ module ApplicationHelper
   end
 
   def nav_link_to(link_path, &block)
-    class_name = current_page?(link_path) ? {class: "text-primary font-bold after:absolute after:-right-4 after:top-1/2 after:-translate-y-1/2 after:w-1 after:h-1/2 after:bg-primary after:rounded-box"} : {}
+    if current_page?(link_path)
+      class_name = "text-primary font-bold " \
+                   "after:absolute after:-right-4 after:top-1/2 after:-translate-y-1/2 " \
+                   "after:w-1 after:h-1/2 after:bg-primary after:rounded-box"
+    end
 
-    content = capture(&block)
-    content_tag(:li, class_name) do
+    content_tag(:li, class: class_name) do
       link_to link_path do
-        content
+        capture(&block)
       end
     end
   end
@@ -25,7 +28,7 @@ module ApplicationHelper
     form_with(model: model, scope: scope, url: url, format: format, **options, &block)
   end
 
-  def svg_icon(filename, options={})
+  def svg_icon(filename, options = {})
     assets = Rails.application.assets
     asset = assets.find_asset(filename)
 
@@ -35,9 +38,9 @@ module ApplicationHelper
       svg = doc.at_css "svg"
       svg["class"] = options[:class] if options[:class].present?
     else
-      doc = "<!-- SVG #{assets} not found -->"
+      svg = "<!-- SVG #{assets} not found -->"
     end
 
-    raw doc
+    svg&.to_html&.html_safe # rubocop:disable Rails/OutputSafety
   end
 end

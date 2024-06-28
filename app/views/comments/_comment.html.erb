@@ -1,22 +1,23 @@
 <% unless comment.parent_id || !comment.persisted? %>
   <div id="<%= dom_id comment %>">
     <p class="pb-4">
-      <%= link_to "#{comment.user.username}:", profile_path(comment.user.username),class:"font-semibold opacity-70" %>
+      <%= link_to "#{comment.user.username}:", profile_path(comment.user.username), class: "font-semibold opacity-70" %>
       <%= comment.content %>
     </p>
     <div class="flex gap-2">
-      <%= link_to "Reply", nil, remote: true, 
-      data: {
-        controller: "comments", 
-        action: "comments#toggleForm", 
-        comments_form_param: "comment-reply-form-#{comment.id}"}, 
-      class: "btn btn-accent"  %>
+      <%= link_to "Reply", nil, remote: true,
+            data: {
+              controller: "comments",
+              action: "comments#toggleForm",
+              comments_form_param: "comment-reply-form-#{comment.id}"
+            },
+            class: "btn btn-accent" %>
       <% if comment.user == current_user %>
-        <%= button_to 'Destroy', [@post,comment], method: :delete, class: "btn btn-primary" %>
+        <%= button_to "Destroy", [post, comment], method: :delete, class: "btn btn-primary" %>
       </div>
     <% end %>
     <div id="comment-reply-form-<%= comment.id %>" class="hidden mb-2">
-      <%= render 'comments/form', post: @post, comment: @post.comments.build(parent_id: comment.id), submit_text: "Reply" %>
+      <%= render "comments/form", post: post, comment: post.comments.build(parent_id: comment.id), submit_text: "Reply" %>
     </div>
     <% if comment.replies.any? %>
       <div class="pl-6 mt-4 flex flex-col gap-2">

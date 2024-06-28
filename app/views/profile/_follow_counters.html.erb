@@ -1,6 +1,6 @@
-<%= turbo_frame_tag follow_counters_dom_id(user), class: "flex gap-2" do%>
+<%= turbo_frame_tag follow_counters_dom_id(user), class: "flex gap-2" do %>
   <%# TODO: Use counter cache  %>
   <p>Followers <span class="font-bold"><%= user.followers.count %></span></p>
   |
   <p>Following <span class="font-bold"><%= user.followings.count %></span></p>
-<%end %>
+<% end %>
