@@ -70,6 +70,15 @@ group :development, :test do
 
   # Tool to help lint your ERB or HTML files using the included linters
   gem "erb_lint", "~> 0.5.0"
+
+  # Testing framework for Rails
+  gem "rspec-rails"
+
+  # Fixtures replacement with a straightforward definition syntax
+  gem "factory_bot_rails"
+
+  # A library for generating fake data such as names, addresses, and phone numbers
+  gem "faker"
 end
 
 group :development do
@@ -88,4 +97,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem "shoulda-matchers"
 end
