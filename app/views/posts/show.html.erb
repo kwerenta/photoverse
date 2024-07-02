@@ -9,8 +9,8 @@
   <%= link_to "Back to posts", root_path, class: "btn btn-ghost" %>
   <div>
     <%= render "comments/form", post: @post, comment: @post.comments.build, submit_text: "Comment" %>
-    <div class="flex flex-col gap-4 mt-4">
-      <%= render @comments, {post: @post} %>
+    <div class="flex flex-col gap-4 divide-y-[1px]">
+      <%= render @comments.select { |comment| comment.parent_id.nil? }, {post: @post} %>
     </div>
   </div>
 </div>

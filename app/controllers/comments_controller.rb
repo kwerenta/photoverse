@@ -8,6 +8,13 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
 
+    if @comment.parent_id
+      @parent_comment = Comment.find(@comment.parent_id)
+      if @parent_comment.parent_id
+        redirect_to post_path(@post), alert: "Reply cannot have another reply." and return
+      end
+    end
+
     if @comment.save
       redirect_to post_path(@post), notice: "Comment has been created."
     else
