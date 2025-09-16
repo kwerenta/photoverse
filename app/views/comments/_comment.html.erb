@@ -2,7 +2,8 @@
     <div class="flex items-start gap-2">
       <%= link_to "#{comment.user.username}:", profile_path(comment.user.username), class: "font-semibold opacity-70" %>
       <p class="flex-1"><%= comment.content %></p>
-      <div class="flex gap-2">
+      <div class="flex gap-2 items-center">
+      <%= render "likes/button", likeable: comment %>
         <% unless comment.parent_id %>
           <%= button_to "Reply", nil, remote: true,
                 data: {
